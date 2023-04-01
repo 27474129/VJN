@@ -1,0 +1,35 @@
+version: "3"
+
+services:
+  frontend:
+    container_name: frontend
+    image: nginx:latest
+    volumes:
+      - ./frontend/nginx.conf:/etc/nginx/conf.d/nginx.conf
+      - ./frontend:/frontend
+    depends_on:
+      - fastapi
+    ports:
+      - "80:80"
+    networks:
+      net:
+        ipv4_address: 192.168.220.2
+
+  fastapi:
+    container_name: fastapi
+    restart: always
+    volumes:
+      - ./api:/api/
+    build: ./api
+    ports:
+      - "8000:8000"
+    networks:
+      net:
+        ipv4_address: 192.168.220.3
+
+networks:
+  net:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 192.168.220.0/24
