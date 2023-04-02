@@ -2,3 +2,5 @@ fastapi
 asyncpg
 python-dotenv
 uvicorn
+alembic
+argon2
