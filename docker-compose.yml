@@ -23,9 +23,28 @@ services:
     build: ./api
     ports:
       - "8000:8000"
+    depends_on:
+      - postgres
     networks:
       net:
         ipv4_address: 192.168.220.3
+
+  postgres:
+    container_name: postgres
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: "123"
+      POSTGRES_USER: postgres
+      POSTGRES_DB: postgres
+      POSTGRES_INITDB_ARGS: "-A md5"
+    volumes:
+      - ./db:/var/lib/postgresql
+    ports:
+      - "54324:5432"
+    networks:
+      net:
+        ipv4_address: 192.168.220.4
 
 networks:
   net:
