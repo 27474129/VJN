@@ -5,7 +5,6 @@ ENV PYTHONUNBUFFERED=1
 RUN mkdir /api/
 COPY . /api/
 WORKDIR /api/
-
 RUN cd /api/
 
 RUN pip3 install -r requirements.txt

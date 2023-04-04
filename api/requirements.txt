@@ -4,3 +4,4 @@ python-dotenv
 uvicorn
 alembic
 argon2
+finnhub-python
