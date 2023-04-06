@@ -8,15 +8,15 @@ services:
     volumes:
       - ./client:/app/
     depends_on:
-      - fastapi
+      - api
     ports:
       - "8004:8004"
     networks:
       net:
         ipv4_address: 192.168.220.2
 
-  fastapi:
-    container_name: fastapi
+  api:
+    container_name: api
     restart: always
     volumes:
       - ./api:/api/
@@ -24,13 +24,13 @@ services:
     ports:
       - "8000:8000"
     depends_on:
-      - postgres
+      - api_postgres
     networks:
       net:
         ipv4_address: 192.168.220.3
 
-  postgres:
-    container_name: postgres
+  api_postgres:
+    container_name: api_postgres
     image: postgres
     restart: always
     environment:
@@ -38,13 +38,44 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_DB: postgres
       POSTGRES_INITDB_ARGS: "-A md5"
-    volumes:
-      - ./db:/var/lib/postgresql
+    # volumes:
+      # - ./db:/var/lib/postgresql
     ports:
       - "54324:5432"
     networks:
       net:
         ipv4_address: 192.168.220.4
+
+  stock_market:
+    container_name: stock_market
+    build: ./stock_market
+    restart: always
+    volumes:
+      - ./stock_market:/stock_market/
+    ports:
+      - "8523:8523"
+    depends_on:
+      - stock_market_postgres
+    networks:
+      net:
+        ipv4_address: 192.168.220.5
+
+  stock_market_postgres:
+    container_name: stock_market_postgres
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: "321"
+      POSTGRES_USER: postgres
+      POSTGRES_DB: postgres
+      POSTGRES_INITDB_ARGS: "-A md5"
+    # volumes:
+      # - ./db:/var/lib/postgresql
+    ports:
+      - "6883:6888"
+    networks:
+      net:
+        ipv4_address: 192.168.220.6
 
 networks:
   net:
