@@ -2,6 +2,5 @@ fastapi
 asyncpg
 python-dotenv
 uvicorn
-alembic
 argon2
-finnhub-python
+yoyo-migrations

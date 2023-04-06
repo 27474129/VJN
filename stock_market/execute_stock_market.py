@@ -2,6 +2,8 @@ import asyncio
 
 import tornado.web
 
+from apply_migrations import apply_migrations
+
 
 class MainHandler(tornado.web.RequestHandler):
     def get(self):
@@ -21,4 +23,5 @@ async def main():
 
 
 if __name__ == "__main__":
+    apply_migrations()
     asyncio.run(main())

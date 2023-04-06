@@ -9,4 +9,4 @@ RUN cd /stock_market/
 
 RUN pip3 install -r requirements.txt
 
-CMD ["python3", "stock_market.py"]
+CMD ["python3", "execute_stock_market.py"]

@@ -58,7 +58,7 @@ services:
       - stock_market_postgres
     networks:
       net:
-        ipv4_address: 192.168.220.5
+        ipv4_address: 192.168.220.6
 
   stock_market_postgres:
     container_name: stock_market_postgres
@@ -69,13 +69,16 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_DB: postgres
       POSTGRES_INITDB_ARGS: "-A md5"
+    expose:
+      - "6888"
     # volumes:
       # - ./db:/var/lib/postgresql
     ports:
-      - "6883:6888"
+      - "6888:6888"
+    command: -p 6888
     networks:
       net:
-        ipv4_address: 192.168.220.6
+        ipv4_address: 192.168.220.5
 
 networks:
   net:
@@ -83,3 +86,6 @@ networks:
     ipam:
       config:
         - subnet: 192.168.220.0/24
+
+volumes:
+  db: null

@@ -1,2 +1,4 @@
 finnhub-python
 tornado
+yoyo-migrations
+psycopg2
