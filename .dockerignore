@@ -5,4 +5,3 @@ venv
 env
 /.idea
 **/__pycache__/
-/client/node_modules
