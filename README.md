@@ -1,8 +1,11 @@
 Лаунч проекта.
 
 cd frontend
+
 npm install
+
 cd ..
+
 docker-compose up --build
 
 Если вы сделаете правку в .py, .css, .html и.т.д файлах, то правка сразу попадет в докер контейнер.
