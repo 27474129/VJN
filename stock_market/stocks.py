@@ -6,9 +6,9 @@ from stock_market.config import FINNHUB_API_TOKEN
 
 
 def get_stock(symbol: str) -> Dict[str, float]:
-    """Метод получения текущей информации об акциях определенной компании.
+    """Функция получения текущей информации об акциях определенной компании.
 
-    symbol - название акций компании.
+    :param symbol - название акций компании.
     """
     finnhub_client = finnhub.Client(api_key=FINNHUB_API_TOKEN)
     current_info = finnhub_client.quote(symbol)
