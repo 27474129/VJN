@@ -3,25 +3,20 @@ import asyncio
 import tornado.web
 
 from apply_migrations import apply_migrations
-
-
-class MainHandler(tornado.web.RequestHandler):
-    def get(self):
-        self.write("Hello, world")
-
-
-def make_app():
-    return tornado.web.Application(
-        [("/", MainHandler)], autoreload=True
-    )
+from urls import urls
+from config import APP_PORT
 
 
 async def main():
-    app = make_app()
-    app.listen(8523)
+    app = tornado.web.Application(urls, autoreload=True)
+    app.listen(APP_PORT)
     await asyncio.Event().wait()
 
 
 if __name__ == "__main__":
     apply_migrations()
-    asyncio.run(main())
+    try:
+        asyncio.run(main())
+    except Exception as e:
+        # TODO: Поменять на логирование
+        print(e)

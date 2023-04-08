@@ -5,9 +5,8 @@ WORKDIR /app
 COPY package.json .
 
 RUN npm install
-RUN npm install typescript -g
 
 COPY . .
 
-EXPOSE 8004
+EXPOSE 3000
 CMD ["npm", "start"]

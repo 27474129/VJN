@@ -11,7 +11,7 @@ services:
     depends_on:
       - api
     ports:
-      - "8004:8004"
+      - "3000:3000"
     stdin_open: true
     tty: true
     networks:
@@ -42,7 +42,7 @@ services:
       POSTGRES_DB: postgres
       POSTGRES_INITDB_ARGS: "-A md5"
     # volumes:
-      # - ./db:/var/lib/postgresql
+      # - db:/var/lib/postgresql
     ports:
       - "54324:5432"
     networks:

@@ -1,8 +1,9 @@
+from yoyo import read_migrations, get_backend
+
+from postgres_conn import PostgresConn
+
+
 def apply_migrations():
-    from yoyo import read_migrations, get_backend
-    # TODO: Сделать получение стринги коннекта из yoyo.ini
-    backend = get_backend(
-        'postgresql://postgres:321@192.168.220.5:6888/postgres'
-    )
+    backend = get_backend(PostgresConn.connection_string)
     migrations = read_migrations('./migrations')
     backend.apply_migrations(backend.to_apply(migrations))

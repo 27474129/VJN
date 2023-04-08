@@ -1,2 +1,11 @@
 FINNHUB_API_TOKEN = 'cglk9lpr01qrjukr9h70cglk9lpr01qrjukr9h7g'
 FINNHUB_WEBKOOK_SECRET_TOKEN = 'cglk9lpr01qrjukr9h8g'
+
+APP_PORT = 8523
+
+DB_USERNAME = 'postgres'
+DB_PASSWORD = '321'
+DB_NAME = 'postgres'
+
+APP_HOST = '192.168.220.5'
+DB_PORT = 6888
