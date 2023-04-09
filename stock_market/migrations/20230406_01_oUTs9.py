@@ -27,7 +27,7 @@ steps = [
             ('GOOGL', 'Alphabet Inc. Class A Common Stock'),
             ('NVDA', 'NVIDIA Corporation Common Stock'),
             ('TSLA', 'Tesla, Inc. Common Stock'),
-            ('V', '	Visa Inc.'),
+            ('V', 'Visa Inc.'),
             ('NVO', 'Novo Nordisk A/S Common Stock')
         ON CONFLICT DO NOTHING;
         """

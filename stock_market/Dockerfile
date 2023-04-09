@@ -7,6 +7,7 @@ COPY . /stock_market/
 WORKDIR /stock_market/
 RUN cd /stock_market/
 
+
 RUN pip3 install -r requirements.txt
 
 CMD ["python3", "execute_stock_market.py"]

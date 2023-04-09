@@ -1,8 +1,12 @@
+import logging
 from typing import Dict
 
 import finnhub
 
-from stock_market.config import FINNHUB_API_TOKEN
+from stock_market.backend.config import FINNHUB_API_TOKEN
+
+
+logger = logging.getLogger(__name__)
 
 
 def get_stock(symbol: str) -> Dict[str, float]:
@@ -12,6 +16,7 @@ def get_stock(symbol: str) -> Dict[str, float]:
     """
     finnhub_client = finnhub.Client(api_key=FINNHUB_API_TOKEN)
     current_info = finnhub_client.quote(symbol)
+    logger.info(f'Получена акция компании: {symbol}')
     # Парсим ответ от финхаба, чтобы убрать лишние поля и добавить более
     # понятную аннотацию
     parsed_current_info: Dict = {}

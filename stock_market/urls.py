@@ -1,6 +1,4 @@
-from handlers import StocksHandler
-
-
 urls = [
-    ('/stocks', StocksHandler)
+    ('/stocks', 'backend.stocks.handlers.StocksHandler'),
+    ('/companies', 'backend.base.handlers.CompaniesHandler')
 ]

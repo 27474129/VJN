@@ -7,5 +7,9 @@ DB_USERNAME = 'postgres'
 DB_PASSWORD = '321'
 DB_NAME = 'postgres'
 
-APP_HOST = '192.168.220.5'
+DB_HOST = '192.168.220.5'
+# DB_HOST = '0.0.0.0'
 DB_PORT = 6888
+
+CONNECTION_STRING = f'postgresql://{DB_USERNAME}:{DB_PASSWORD}@' \
+                        f'{DB_HOST}:{DB_PORT}/{DB_NAME}'
